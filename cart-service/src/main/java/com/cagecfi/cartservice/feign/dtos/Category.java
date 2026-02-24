@@ -1,6 +1,6 @@
 package com.cagecfi.cartservice.feign.dtos;
 
-public record CategoryResponse(
+public record Category(
         String id,
         String libelle,
         String createdAt,
