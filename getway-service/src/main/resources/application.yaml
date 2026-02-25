@@ -1,62 +1,9 @@
-# Pour la configuration des routes, je me suis référé à StackOverflow sur le lien suivant :
+# Pour la configuration des routes, je me suis référé à un article StackOverflow sur le lien suivant :
 # https://stackoverflow.com/questions/77848275/how-to-use-spring-cloud-gateway-mvc-with-a-discovery-client-service-like-eureka
 server:
   port: 8000
 spring:
   application:
     name: gateway-service
-  cloud:
-    gateway:
-      server:
-        webmvc:
-          routes:
-            - id: product-service
-              uri: lb://PRODUCT-SERVICE
-              predicates:
-                - Path=/product-service/**
-              filters:
-                - StripPrefix=1
-            - id: customer-service
-              uri: lb://CUSTOMER-SERVICE
-              predicates:
-                - Path=/customer-service/**
-              filters:
-                - StripPrefix=1
-            - id: cart-service
-              uri: lb://CART-SERVICE
-              predicates:
-                - Path=/cart-service/**
-              filters:
-                - StripPrefix=1
-            - id: order-service
-              uri: lb://ORDER-SERVICE
-              predicates:
-                - Path=/order-service/**
-              filters:
-                - StripPrefix=1
-            - id: notification-service
-              uri: lb://NOTIFICATION-SERVICE
-              predicates:
-                - Path=/notification-service/**
-              filters:
-                - StripPrefix=1
-
-
   config:
     import: optional:configserver:${CONFIG_SERVICE_URL:http://localhost:8888}
-
-eureka:
-  client:
-    service-url:
-      defaultZone: http://localhost:8761/eureka/
-    register-with-eureka: true
-    fetch-registry: true
-
-management:
-  tracing:
-    sampling:
-      probability: 1.0
-  endpoints:
-    web:
-      exposure:
-        include: "*"

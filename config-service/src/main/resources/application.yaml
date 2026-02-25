@@ -7,7 +7,7 @@ spring:
     config:
       server:
         git:
-          uri: file:///home/oks/config-repo
+          uri: ${CONFIG_FOLDER_URI:file:///home/oks/e-comm-project-ms-config-repo}
           default-label: main
       enabled: true
     discovery:
