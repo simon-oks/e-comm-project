@@ -2,8 +2,7 @@ package com.cagecfi.productservice.entity;
 
 import com.cagecfi.productservice.utils.IdGenerator;
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
@@ -15,12 +14,16 @@ import java.util.Objects;
 @Table(name = "products")
 @Getter
 @NoArgsConstructor
+@AllArgsConstructor
+@Builder
+@ToString(exclude = {"category"})
 public class Product {
     @Id
     private String id;
     private String name;
     private String description;
     private BigDecimal price;
+    private String fileName;
 
     @ManyToOne(optional = false)
     private Category category;
@@ -38,16 +41,17 @@ public class Product {
     @Column(name = "deleted_at")
     private Instant deletedAt;
 
-    public Product(String name, String description, BigDecimal price, Category category){
+    public Product(String name, String description, BigDecimal price, String fileName, Category category){
         this.id = IdGenerator.generate();
         this.name = Objects.requireNonNull(name, "Le nom du produit ne peut pas etre null");
         this.description = description;
         this.price = Objects.requireNonNull(price, "Le prix du produit ne peut pas etre null");
+        this.fileName = fileName;
         this.category = Objects.requireNonNull(category, "La catégorie du produit ne peut pas etre null");
     }
 
-    public static Product create(String name, String description, BigDecimal price, Category category){
-        return new Product(name, description, price, category);
+    public static Product create(String name, String description, BigDecimal price, String fileName, Category category){
+        return new Product(name, description, price, fileName, category);
     }
 
     public void update(String name, String description, BigDecimal price, Category category){

@@ -22,6 +22,7 @@ public class Customer {
     private String id;
     private String name;
     private String email;
+    private String password;
     private String phone;
     private String address;
 
@@ -42,6 +43,7 @@ public class Customer {
         this.id = IdGenerator.generate();
         this.name = Objects.requireNonNull(name, "Le nom ne pas être null");
         this.email = Objects.requireNonNull(email, "L'email ne peut pas être null");
+        this.password = "1234";
         this.phone = Objects.requireNonNull(phone, "Le phone est obligatoire ne peut pas être null");
         this.address = address;
     }

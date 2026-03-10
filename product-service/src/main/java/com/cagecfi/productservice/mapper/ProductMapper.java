@@ -18,6 +18,7 @@ public class ProductMapper {
                 request.name(),
                 request.description(),
                 request.price(),
+                request.fileName(),
                 category
         );
     }
@@ -39,6 +40,7 @@ public class ProductMapper {
                 p.getName(),
                 p.getDescription(),
                 p.getPrice(),
+                p.getFileName(),
                 categoryMapper.toResponse(p.getCategory()),
                 p.getCreatedAt() != null ? p.getCreatedAt().toString() : null,
                 p.getUpdatedAt() != null ? p.getUpdatedAt().toString() : null

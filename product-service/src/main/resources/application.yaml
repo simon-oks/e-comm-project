@@ -7,5 +7,27 @@ spring:
   config:
     import: optional:configserver:${CONFIG_SERVICE_URL:http://localhost:8888}
 
+product:
+  data-init:
+    enabled: true
+    images-dir: ${PRODUCT_DATA_INIT_IMAGES_DIR:/home/oks/e-comm-project-ms-product-files}
+    image-files:
+      - Chaussure 1.jpeg
+      - Chaussure 2.jpeg
+      - Chaussure 3.jpeg
+      - Chaussure 4.jpg
+      - Frigo 1.jpeg
+      - Frigo 2.jpeg
+      - Frigo 3.jpeg
+      - Frigo 4.jpeg
+      - Phone 1.jpeg
+      - Phone 2.jpeg
+      - Phone 3.jpeg
+      - Phone 4.jpeg
+      - Sac 1.jpeg
+      - Sac 2.jpeg
+      - Sac 3.jpeg
+      - Sac 4.jpeg
+
 
 

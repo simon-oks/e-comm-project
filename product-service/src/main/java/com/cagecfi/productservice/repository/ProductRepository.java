@@ -11,4 +11,6 @@ public interface ProductRepository extends JpaRepository<Product, String> {
     List<Product> findAllByCategory_IdAndDeletedIsFalse(String category_id);
     List<Product> findAllByDeletedIsFalse();
     List<Product> searchByNameContainingIgnoreCaseOrDescriptionContainingIgnoreCaseAndDeletedIsFalse(String name, String description);
+
+    boolean existsByName(String productName);
 }

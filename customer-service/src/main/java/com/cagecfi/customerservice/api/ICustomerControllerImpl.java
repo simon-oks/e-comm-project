@@ -1,5 +1,6 @@
 package com.cagecfi.customerservice.api;
 
+import com.cagecfi.customerservice.dto.CustomerLoginRequest;
 import com.cagecfi.customerservice.dto.CustomerRequest;
 import com.cagecfi.customerservice.dto.CustomerResponse;
 import com.cagecfi.customerservice.service.ICustomerService;
@@ -57,5 +58,11 @@ public class ICustomerControllerImpl implements ICustomerController {
     @GetMapping("/search")
     public ResponseEntity<List<CustomerResponse>> searchCustomers(@RequestParam(name = "sk") String searchKey) {
         return ResponseEntity.ok(service.searchCustomers(searchKey));
+    }
+
+    @Override
+    @PostMapping("/login")
+    public ResponseEntity<CustomerResponse> login(@RequestBody CustomerLoginRequest request) {
+        return ResponseEntity.ok(service.login(request.email(), request.password()));
     }
 }

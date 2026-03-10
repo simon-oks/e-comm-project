@@ -14,5 +14,7 @@ public interface ICustomerService {
     List<CustomerResponse> getAllCustomers();
     List<CustomerResponse> searchCustomers(String searchKey);
 
+    CustomerResponse login(String email, String password);
+
     Customer findCustomerById(String id);
 }

@@ -8,7 +8,7 @@ import java.util.Optional;
 
 public interface CustomerRepository extends JpaRepository<Customer, String> {
     Optional<Customer> findByIdAndDeletedIsFalse(String id);
-    Optional<Customer> findByEmailAndDeletedFalse(String email);
+    Optional<Customer> findByEmailAndPasswordAndDeletedFalse(String email, String password);
     List<Customer> searchByNameContainingIgnoreCaseOrEmailContainingIgnoreCase(String name, String email);
     List<Customer> findAllByDeletedIsFalse();
 }

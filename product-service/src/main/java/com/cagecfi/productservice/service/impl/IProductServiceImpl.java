@@ -67,7 +67,10 @@ public class IProductServiceImpl implements IProductService {
     public List<ProductResponse> getAll() {
         log.info("Getting all no deleted products");
         return repository.findAllByDeletedIsFalse().stream()
-                .map(mapper::toResponse)
+                .map((p) -> {
+                    System.out.println(p);
+                    return mapper.toResponse(p);
+                })
                 .toList();
     }
 

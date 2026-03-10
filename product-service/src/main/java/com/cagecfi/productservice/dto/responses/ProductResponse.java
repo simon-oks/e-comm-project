@@ -7,6 +7,7 @@ public record ProductResponse(
         String name,
         String description,
         BigDecimal price,
+        String fileName,
         CategoryResponse category,
         String createdAt,
         String updatedAt

@@ -70,6 +70,13 @@ public class ICustomerServiceImpl implements ICustomerService {
     }
 
     @Override
+    public CustomerResponse login(String email, String password) {
+        return repository.findByEmailAndPasswordAndDeletedFalse(email, password)
+                .map(mapper::toResponse)
+                .orElseThrow(() -> new CustomerNotFoundException("Customer not found"));
+    }
+
+    @Override
     public Customer findCustomerById(String id) {
         return repository.findByIdAndDeletedIsFalse(id)
                 .orElseThrow(() -> new CustomerNotFoundException("Customer not found"));

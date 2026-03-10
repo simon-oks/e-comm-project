@@ -8,6 +8,7 @@ import java.util.Optional;
 
 public interface CategoryRepository extends JpaRepository<Category, String> {
     Optional<Category> findByIdAndDeletedIsFalse(String id);
+    List<Category> findByLibelleContainingIgnoreCase(String s);
     List<Category> findAllByDeletedIsFalse();
     List<Category> searchByLibelleContainingIgnoreCaseAndDeletedIsFalse(String libelle);
     Optional<Category> findByLibelle(String libelle);

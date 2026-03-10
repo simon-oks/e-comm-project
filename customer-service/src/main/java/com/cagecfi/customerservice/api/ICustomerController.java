@@ -1,8 +1,8 @@
 package com.cagecfi.customerservice.api;
 
+import com.cagecfi.customerservice.dto.CustomerLoginRequest;
 import com.cagecfi.customerservice.dto.CustomerRequest;
 import com.cagecfi.customerservice.dto.CustomerResponse;
-import com.cagecfi.customerservice.entity.Customer;
 import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
 
@@ -15,4 +15,5 @@ public interface ICustomerController {
     ResponseEntity<CustomerResponse> getCustomer(String id);
     ResponseEntity<List<CustomerResponse>> getAllCustomers();
     ResponseEntity<List<CustomerResponse>> searchCustomers(String searchKey);
+    ResponseEntity<CustomerResponse> login(@Valid CustomerLoginRequest request);
 }
